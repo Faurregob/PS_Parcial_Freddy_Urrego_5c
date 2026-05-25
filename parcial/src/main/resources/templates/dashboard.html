@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Dashboard</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f0f4f8;
+            min-height: 100vh;
+        }
+        nav {
+            background: #0f3460;
+            padding: 0 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        nav .brand { color: #fff; font-size: 1.2rem; font-weight: 700; }
+        nav .user-info { display: flex; align-items: center; gap: 16px; }
+        nav .user-info span { color: #cbd5e1; font-size: 0.9rem; }
+        nav .logout-btn {
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background .2s;
+        }
+        nav .logout-btn:hover { background: #c0392b; }
+
+        .container { max-width: 960px; margin: 40px auto; padding: 0 24px; }
+        .welcome {
+            background: #fff;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            margin-bottom: 24px;
+        }
+        .welcome h2 { color: #0f3460; font-size: 1.6rem; }
+        .welcome p { color: #555; margin-top: 8px; }
+
+        .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .stat-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        .stat-card .icon { font-size: 2.2rem; }
+        .stat-card h3 { color: #0f3460; margin-top: 10px; font-size: 1rem; }
+        .stat-card p { color: #666; font-size: 0.85rem; margin-top: 4px; }
+    </style>
+</head>
+<body>
+<nav>
+    <span class="brand">&#128274; Portal Ucompensar</span>
+    <div class="user-info">
+        <span>&#128100; <strong th:text="${username}">usuario</strong></span>
+        <a href="/logout" class="logout-btn">Cerrar sesión</a>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="welcome">
+        <h2>¡Bienvenido, <span th:text="${username}">usuario</span>!</h2>
+        <p>Has iniciado sesión exitosamente. Este es tu panel de control.</p>
+    </div>
+
+    <div class="cards">
+        <div class="stat-card">
+            <div class="icon">&#128218;</div>
+            <h3>Cursos</h3>
+            <p>Gestiona tus cursos activos</p>
+        </div>
+        <div class="stat-card">
+            <div class="icon">&#128101;</div>
+            <h3>Estudiantes</h3>
+            <p>Consulta tus aprendices</p>
+        </div>
+        <div class="stat-card">
+            <div class="icon">&#128202;</div>
+            <h3>Reportes</h3>
+            <p>Visualiza estadísticas</p>
+        </div>
+        <div class="stat-card">
+            <div class="icon">&#9881;&#65039;</div>
+            <h3>Configuración</h3>
+            <p>Ajusta tu perfil</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

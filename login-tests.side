@@ -1,0 +1,239 @@
+{
+  "id": "01420124-a12f-4e95-84a7-24d1a2bb01ab",
+  "version": "2.0",
+  "name": "PS_Parcial_Freddy_Urrego_5C",
+  "url": "http://localhost:8080/login",
+  "tests": [{
+    "id": "821b3e70-6c63-4b1e-97dc-f1a353f06e86",
+    "name": "TC-UI-01  Login exitoso redirige al dashboard",
+    "commands": [{
+      "id": "b496a22d-4043-47db-837a-a0a9c1fe9bd7",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b6a32e82-8ba2-435e-880e-1e87de1a8d66",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1421x693",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "02d8571d-da48-42fb-9136-c94bedb60222",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2bc63e8b-a9ef-4052-bbc9-8777c2dfd95a",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "admin"
+    }, {
+      "id": "16430954-39fb-44e8-a2cf-f28a0246d1e0",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "admin123"
+    }, {
+      "id": "a0d0cd5e-05bb-46e3-a841-dce0a4225c57",
+      "comment": "",
+      "command": "click",
+      "target": "css=button",
+      "targets": [
+        ["css=button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Iniciar Sesión')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "d9c2f1d2-7c67-498b-b9c7-c3d3153c67de",
+    "name": "TC-UI-02  Credenciales incorrectas muestran mensaje de error",
+    "commands": [{
+      "id": "3d37e3cb-ef2d-4c40-a24b-b0c91407593a",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5504a81e-0bae-43e1-9391-545d8b6dd512",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1421x693",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "71c25e25-2b2c-487a-8de1-c7c84e3e184d",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c4caa004-b13e-48d9-b13a-5017605469f1",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "admin"
+    }, {
+      "id": "e9749b33-a020-4aa5-a7d4-7cd794376837",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "wrongpass"
+    }, {
+      "id": "13f67b9d-16e9-46eb-ba18-57194071c4e6",
+      "comment": "",
+      "command": "click",
+      "target": "css=button",
+      "targets": [
+        ["css=button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Iniciar Sesión')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "119993ff-a124-422c-9b73-ee9bbd05d6a3",
+    "name": "TC-UI-03  Campo usuario vacio muestra validacion",
+    "commands": [{
+      "id": "54772038-7106-4f87-8522-8d0306493534",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "27297eb2-357d-4e5b-8ed0-27196a544b17",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1421x693",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "413be26d-3604-4367-bbfc-ab118acb8f83",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f6a35c8d-9d88-4e33-acca-736c4baa89db",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "admin123"
+    }, {
+      "id": "8eab8cd1-5b0c-4bc1-add7-1a7456902d0f",
+      "comment": "",
+      "command": "click",
+      "target": "css=button",
+      "targets": [
+        ["css=button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Iniciar Sesión')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "64db3556-a785-4e6a-af84-d4e70f532234",
+    "name": "TC-UI-04  Acceso directo al dashboard sin sesion redirige al login",
+    "commands": [{
+      "id": "633d5dd9-9452-441f-8b6d-ab6920cb946d",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5f0c72d2-501d-40d6-bf7c-390e6508a0c2",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1421x693",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "560bb6b5-1e71-4081-b2b4-9dee428d2716",
+      "comment": "",
+      "command": "click",
+      "target": "css=body",
+      "targets": [
+        ["css=body", "css:finder"],
+        ["xpath=//body", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "9f7d7b1d-735d-41de-acb0-d459c3d0667f",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://localhost:8080/", "http://localhost:8080/login"],
+  "plugins": []
+}

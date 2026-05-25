@@ -1,0 +1,419 @@
+{
+  "info": {
+    "_postman_id": "d4c4967c-d6a7-4b23-9768-cfccc2cf39a3",
+    "name": "Parcial-Login Tests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "50699496",
+    "_collection_link": "https://go.postman.co/collection/50699496-d4c4967c-d6a7-4b23-9768-cfccc2cf39a3?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "/login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status 200', () => {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "pm.test('Contiene formulario HTML', () => {\r",
+              "    pm.expect(pm.response.text()).to.include('Iniciar Sesi');\r",
+              "});\r",
+              "pm.test('Content-Type es text/html', () => {\r",
+              "    pm.expect(pm.response.headers.get('Content-Type'))\r",
+              "        .to.include('text/html');\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "followRedirects": false
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/login con credenciales correctas.",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Redirige al dashboard (302)', () => {\r",
+              "    pm.response.to.have.status(302);\r",
+              "});\r",
+              "pm.test('Location apunta a /dashboard', () => {\r",
+              "    pm.expect(pm.response.headers.get('Location'))\r",
+              "        .to.include('/dashboard');\r",
+              "});\r",
+              "\r",
+              "const cookie = pm.response.headers.get('Set-Cookie');\r",
+              "if (cookie) pm.collectionVariables.set('session_cookie', cookie);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "followRedirects": false
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "username",
+              "value": "admin",
+              "type": "text",
+              "uuid": "ad8976f0-414b-4f8e-82a5-81512b7461d5"
+            },
+            {
+              "key": "password",
+              "value": "admin123",
+              "type": "text",
+              "uuid": "cb31a0e7-6616-408c-a2c5-4db7b7afd719"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/login con contraseña incorrecta.",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Permanece en login (200)', () => {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "pm.test('Muestra mensaje de error', () => {\r",
+              "    pm.expect(pm.response.text())\r",
+              "        .to.include('incorrectos');\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "followRedirects": false
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "username",
+              "value": "admin",
+              "type": "text",
+              "uuid": "ad8976f0-414b-4f8e-82a5-81512b7461d5"
+            },
+            {
+              "key": "password",
+              "value": "admin123",
+              "type": "text",
+              "uuid": "cb31a0e7-6616-408c-a2c5-4db7b7afd719"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}/login?username=admin&password=contrasena_incorrecta",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "login"
+          ],
+          "query": [
+            {
+              "key": "username",
+              "value": "admin"
+            },
+            {
+              "key": "password",
+              "value": "contrasena_incorrecta"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/login con username vacío.",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Permanece en login (200)', () => {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "pm.test('Indica campo obligatorio', () => {\r",
+              "    pm.expect(pm.response.text())\r",
+              "        .to.include('campo usuario es obligatorio');\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "followRedirects": false
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "username",
+              "value": "",
+              "type": "text",
+              "uuid": "2121cda7-670e-48c9-b0f7-45ae689f0f3a"
+            },
+            {
+              "key": "password",
+              "value": "admin123",
+              "type": "text",
+              "uuid": "27be444f-ebee-4955-b389-b64228d9cb1d"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/dashboard sin sesión.",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Redirige al login (302)', () => {\r",
+              "    pm.response.to.have.status(302);\r",
+              "});\r",
+              "pm.test('Location apunta a /login', () => {\r",
+              "    pm.expect(pm.response.headers.get('Location'))\r",
+              "        .to.include('/login');\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true,
+        "followRedirects": false
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "username",
+              "value": "admin",
+              "type": "text",
+              "uuid": "ad8976f0-414b-4f8e-82a5-81512b7461d5"
+            },
+            {
+              "key": "password",
+              "value": "admin123",
+              "type": "text",
+              "uuid": "cb31a0e7-6616-408c-a2c5-4db7b7afd719"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}/dashboard",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "dashboard"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/dashboard con sesión activa.",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Pestana Tests:\r",
+              "pm.test('Acceso permitido (200)', () => {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "pm.test('Contiene saludo de bienvenida', () => {\r",
+              "    pm.expect(pm.response.text())\r",
+              "        .to.include('Bienvenido');\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true,
+        "followRedirects": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "username",
+              "value": "admin",
+              "type": "text",
+              "uuid": "ad8976f0-414b-4f8e-82a5-81512b7461d5"
+            },
+            {
+              "key": "password",
+              "value": "admin123",
+              "type": "text",
+              "uuid": "cb31a0e7-6616-408c-a2c5-4db7b7afd719"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}/dashboard",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "dashboard"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/logout.",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Redirige al login tras logout (302)', () => {\r",
+              "    pm.response.to.have.status(302);\r",
+              "});\r",
+              "pm.test('Location apunta a /login', () => {\r",
+              "    pm.expect(pm.response.headers.get('Location'))\r",
+              "        .to.include('/login');\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "followRedirects": false
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/logout",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "logout"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080"
+    }
+  ]
+}
